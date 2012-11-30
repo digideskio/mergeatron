@@ -1,3 +1,5 @@
+#test
+
 # Mergeatron
 
 Mergeatron is a Node.js bot that monitors a GitHub account for new, and updated, Pull Requests. When it finds any it will kick off a Jenkins build and reply to the Pull Request with a thumbs up, or down, depending on success or failure.
