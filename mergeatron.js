@@ -7,7 +7,7 @@ var config = require('./config').config,
 	winston = require('winston');
 
 /**
- * The main Mergeatron class that. This class contains a reference to the selected
+ * The main Mergeatron class. This class contains a reference to the selected
  * database.
  *
  * @class Mergeatron
@@ -40,7 +40,7 @@ config.plugin_dirs.forEach(function(dir) {
 		for (var i = 0, l = files.length; i < l; i++) {
 			var filename = dir + files[i],
 				pluginName = files[i].split('.', 2)[0],
-				conf = { enabled: true };
+				conf = { enabled: false };
 
 			if (!filename.match(/\.js$/)) {
 				continue;
@@ -52,7 +52,7 @@ config.plugin_dirs.forEach(function(dir) {
 				conf = config.plugins[pluginName];
 			}
 
-			if (conf.enabled === undefined || conf.enabled) {
+			if (conf.enabled !== undefined && conf.enabled) {
 				require(filename).init(conf, mergeatron);
 			} else {
 				mergeatron.log.info('Not loading disabled plugin ' + pluginName);

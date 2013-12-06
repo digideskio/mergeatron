@@ -15,6 +15,7 @@ exports.config = {
 	plugin_dirs: [ './plugins/' ],
 	plugins: {
 		github: {
+			enabled: true,
 			method: 'hooks',    // 'hooks' for webhooks or 'polling' to poll the REST API
 			auth: {
 				type: 'basic',
@@ -35,6 +36,7 @@ exports.config = {
 			}
 		},
 		jenkins:  {
+			enabled: true,
 			user: false,
 			pass: false,
 			protocol: 'http',
