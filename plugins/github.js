@@ -468,6 +468,10 @@ exports.init = function(config, mergeatron) {
 		github.createStatus(job.head, config.user, pull.repo, 'success', build_url, 'Mergeatron Build Succeeded');
 	});
 
+	mergeatron.on('build.aborted', function(job, pull, build_url) {
+		github.createStatus(job.head, config.user, pull.repo, 'failure', build_url, 'Mergeatron Build Failed');
+	});
+
 	mergeatron.on('pull.inline_status', function(pull, sha, file, position, comment) {
 		github.createComment(pull, sha, file, position, comment) ;
 	});
