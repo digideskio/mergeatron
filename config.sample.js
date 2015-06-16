@@ -49,6 +49,13 @@ exports.config = {
 			}],
 			frequency: 2000
 		},
+		hipchat:  {
+			enabled: true,
+			token: 'API_TOKEN', // Hipchat User's personal API token
+			github_to_hipchat_users: { // Optional user translation hash for @mentions
+				mbarany: 'MichaelBarany'
+			}
+		},
 		phpcs: {
 			enabled: false,
 			artifact: 'artifacts/phpcs.csv'
