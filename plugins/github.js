@@ -298,7 +298,7 @@ GitHub.prototype.processPull = function(pull) {
 					continue;
 				}
 
-				if (comment.created_at > item.updated_at && comment.body.indexOf('@' + self.config.auth.user + ' retest') != -1) {
+				if (comment.created_at > item.updated_at && comment.body.indexOf('@' + self.config.auth.username + ' retest') != -1) {
 					self.mergeatron.emit('pull.processed', pull, pull.number, pull.head.sha, ssh_url, branch, pull.updated_at);
 					return;
 				}
@@ -432,7 +432,7 @@ GitHub.prototype.handleIssueComment = function(comment) {
 		return;
 	}
 
-	if (comment.comment.body.indexOf('@' + this.config.auth.user + ' retest') != -1) {
+	if (comment.comment.body.indexOf('@' + this.config.auth.username + ' retest') != -1) {
 		this.mergeatron.log.debug('Received retest request for pull', { pull_number: comment.issue.number, repo: comment.repository.name });
 
 		var self = this;
