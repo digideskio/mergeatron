@@ -54,7 +54,10 @@ exports.config = {
 			token: 'API_TOKEN', // Hipchat User's personal API token
 			github_to_hipchat_users: { // Optional user translation hash for @mentions
 				mbarany: 'MichaelBarany'
-			}
+			},
+			blacklist: [ // Optional blacklist of github users that don't want notifs
+				'thatguy'
+			]
 		},
 		phpcs: {
 			enabled: false,
