@@ -26,6 +26,9 @@ var Hipchat = function(config, mergeatron) {
  * @return {String}
  */
 Hipchat.prototype.getUser = function(githubUser) {
+	if (this.config.blacklist && this.config.blacklist.indexOf(githubUser) !== -1) {
+		return null;
+	}
 	if (this.config.github_to_hipchat_users && this.config.github_to_hipchat_users[githubUser]) {
 		return this.config.github_to_hipchat_users[githubUser];
 	}
@@ -40,6 +43,9 @@ Hipchat.prototype.getUser = function(githubUser) {
  * @param msg {String}
  */
 Hipchat.prototype.sendUserMessage = function(user, msg) {
+	if (!user) {
+		return;
+	}
 	this.api.send_private_message('@' + user, {
 		message_format: 'text',
 		message: msg
